@@ -60,7 +60,7 @@ params.spectral_offset = -0.5294; % in units nm
 
 params.save_c_on_iters_flag = 1; % whether to save the scene on the iters listed below
 params.save_mu_on_iters_flag = 0; % whether to save sensor space on the iters listed below
-params.saving_iters = [250];
+params.saving_iters = [];
 % display('2');
 % input files
 params.crism_iof_filename = 'E:\simulations_MSEE_MLM\Simulations2.bsq'; %derived SSA alreadymedian filtered
@@ -90,7 +90,7 @@ params.rows_use_all = false;
 params.rows_subset_bounds = [1,170];
 params.cols_use_all = true;
 params.cols_subset_bounds = [250,350];
-params.bands_bounds = [193,430]; % the bands that corresond to the range found in the SSA
+params.bands_bounds = [193,197]; % the bands that corresond to the range found in the SSA
 
 % output file naming
 params.observation_base = '';

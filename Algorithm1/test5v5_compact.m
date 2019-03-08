@@ -102,7 +102,7 @@ params.rows_use_all = 0;
 params.rows_subset_bounds = [1,170];
 params.cols_use_all = true;
 params.cols_subset_bounds = [250,350];
-params.bands_bounds = [193,430]; % the bands that corresond to the range found in the SSA
+params.bands_bounds = [193,197]; % the bands that corresond to the range found in the SSA
 params.pre_end = 36;
 params.post_start = 50;
 params.spec_range = 10;
@@ -349,7 +349,11 @@ if params.is_L_data
     N_row = round(N_col/num_cols*num_rows);
     length_window = round(num_bands/7)*2+1;
 
-    [spec_pnt,spectrogram] = prelearn_pnt_params(crism_iof,N_row,N_col,length_window,params.spec_range);
+    try
+        [spec_pnt,spectrogram] = prelearn_pnt_params(crism_iof,N_row,N_col,length_window,params.spec_range);
+    catch
+        spec_pnt = ones(1,num_bands);
+    end
     figure;plot(wa(floor(num_cols/2),:)/1000,spec_pnt);
     if params.save_spectrogram_flag
         w = [1:length_window]/length_window;
