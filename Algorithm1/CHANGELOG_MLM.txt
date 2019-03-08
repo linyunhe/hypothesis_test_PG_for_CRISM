@@ -1,0 +1,177 @@
+------------------------------------------------------------
+Changes in V4.7.0 (25 April 2017)
+------------------------------------------------------------
+* Now uses a weighted logcosh penalty, minimizing the decoupled
+  function at each iteration
+* Adds C++ translation of new version of penalty (multithreaded)
+* Adds band names for DDR outputs
+* Number of threads for C++ MEX functions now settable in test5v5_compact.m
+* Removes various old unused code & comments (and performs other cleanup)
+
+------------------------------------------------------------
+Changes in V4.6.3 (5 January 2017)
+------------------------------------------------------------
+* Adds options to block part of S data
+* Runs other parts of S data separately 
+* Spectral weighting learned from spectrogram
+* Saves the spectrogram figure
+* Range of spectral weighting for L is allowed to be changed by user
+* Saves the cut inputs (SSA/DDR) with the same size of outputs
+* Range of spectral weighting for S is fixed to 2
+
+------------------------------------------------------------
+Changes in V4.6.1 (4 October 2016)
+------------------------------------------------------------
+* Cuts off the spatial boundary effects in projected image (but does not do
+  so in the unprojected image-space image C)
+* Fixes bug in which the columns and bands which were used in processing
+  were incorrectly reported in header files
+
+------------------------------------------------------------
+Changes in V4.6.0 (12 August 2016)
+------------------------------------------------------------
+* This version adds multiprocessing-capable C++ versions of the spatial
+  projections (forward and back) as well as the log-cosh penalty function.
+  This directory contains the source code, in .h and .cpp files, as well as
+  those files compiled for Windows, in .mexw64 files. For more information
+  about this code and how to build it, see the readme section "About the C++
+  MEX Components."
+* The new C++ versions of the code are used by default if compiled versions
+  are available for the current operating system.
+* The gaussian kernels used in the spectral forward and backward projections
+  are now normalized. Previously, they summed to a value that was not quite 1.
+
+------------------------------------------------------------
+Changes in V4.5.2 (14 July 2016)
+------------------------------------------------------------
+* Changed the radius of Mars used in spatial projections to 3,396,190 m. This
+  change makes all the instances of the radius's use in the program the same
+  value.
+* The program automatically cuts any all-zero rows and columns that are at the
+  edge of the selected region of the SSA.
+
+------------------------------------------------------------
+Changes in V4.5.1 (6 July 2016)
+------------------------------------------------------------
+* Adds support for having a different pixel size for map-projected output from
+  that used during processing. It is found in the GUI as "Output Pix Spacing"
+* Expands the parts of the scene that have a non-zero initial guess a bit to
+  reduce spatial edge artifacts
+
+------------------------------------------------------------
+Changes in V4.5.0 (17 June 2016)
+------------------------------------------------------------
+* Now produces an output product that is truly in the Mars Equirectangular
+  projection. This product is saved at the same iterations that C is set to,
+  with the filename {observation}_{date}_proj_iter_{#}.bsq. C, which is in
+  a local cartesian system, is still written out, too.
+* The radius of Mars is now exactly the same as used by SuperGLT: 3,396,190 m.
+* The exact ranges of rows, columns, and bands used in a run are displayed in
+  the Matlab command window, and are included in all output product header
+  files at the beginning of the description section. These numbers take
+  into account, e.g., those columns without data that are removed
+  automatically, regardless of whether the "Use all columns" box is checked.
+
+------------------------------------------------------------
+Changes in V4.4.2 (14 June 2016)
+------------------------------------------------------------
+* Fixes a bug in the spectral part of the penalty in which the spatial rather
+  than spectral beta was used in calculating the penalty hessian.
+  
+-------------------------------------------------------------
+Changes in V4.4.1 (9 June 2016)
+------------------------------------------------------------
+* Performance improvements in the spatial projections (for off-nadir
+  option). Speedup through better vectorization of kernel-building, to
+  complement the changes for nadir-pointing kernels released in version 4.3.0.
+  Identical results to previous version.
+* Precomputation of spatial kernels now saves to memory rather than to file.
+  (It is disabled by default and cannot be enabled from the GUI.)
+
+-------------------------------------------------------------
+Changes in V4.4.0 (26 May 2016)
+------------------------------------------------------------
+* Edge effects in the spectral domain have been reduced. This modification,
+  written by Linyun He, assumes that bands beyond the edge have the same value
+  as the band on the edge.
+* The bad bands list has been removed. Now that the edge effects are
+  mitigated, hiding the edge bands is no longer necessary.
+* Other small speed improvements.
+
+-------------------------------------------------------------
+Changes in V4.3.0 (18 May 2016)
+-------------------------------------------------------------
+* Performance improvements in the spatial projections (for nadir-pointing
+  option). Speedup through better vectorization of kernel-building. Identical
+  results to previous version.
+* Performance improvements & algorithm improvements to penalty (written by
+  Linyun He). Results for penalty runs are NOT identical to previous versions.
+* Edge bands are no longer cut off output files. Instead, the 3 highest and 3
+  lowest bands are left in output files but added to the bad-bands list via
+  the ENVI header. This is a temporary solution, to be replaced with a method
+  of hiding these poorly-behaved bands that is compatible with more programs
+  than just ENVI.
+* Fixes a bug in 4.2.1 in which the "proj. scene start file" browse button
+  would not work.
+
+-------------------------------------------------------------
+Changes in V4.2.1 (25 January 2016)
+-------------------------------------------------------------
+* Fixes crashing bug caused by error in default bands implementation,
+  that would kill the program whenever output files were saved.
+  
+-------------------------------------------------------------
+Changes in V4.2.0 (22 January 2016)
+-------------------------------------------------------------
+* ENVI headers saved by the program now contain a setting of the
+  "default bands" property. For L-data, the bands listed for RGB correspond
+  to bands 206, 361, and 429 in WA respectively. For S-data, the bands are
+  54, 37, and 27. If any of those bands would not be included in the output
+  data, the property will not be included in the header file.
+* Output files will now have their 3 highest and 3 lowest bands cut off before
+  saving, since those bands are dominated by edge effects. This is not currently
+  configurable in the GUI.
+* The version number of this software is now displayed prominently on the GUI.
+  
+-------------------------------------------------------------
+Changes in V4.1.1 (21 December 2015)
+-------------------------------------------------------------
+* Bugfix to allow successful saving/loading of GUI options that include
+  filenames
+
+-------------------------------------------------------------
+Changes in V4.1.0 (18 December 2015)
+-------------------------------------------------------------
+* Rolling off-nadir geometry is now available. In the GUI, it can be selected
+  under "geometry selection."
+* Saving/loading files of GUI options is available through the "load options
+  file" and "save options file" buttons.
+
+-------------------------------------------------------------
+Changes in V4.0.1 (9 December 2015)
+-------------------------------------------------------------
+
+* Fixes to some bugs that caused program to crash when off-nadir geometry
+  was selected
+
+-------------------------------------------------------------
+New changes in V4 (13 November 2015)
+-------------------------------------------------------------
+
+Starting in version 4, a GUI can be used to start runs of the algorithm. To
+use the GUI, execute crism_gui from a Matlab prompt in this directory.
+
+The method of editing parameters of the algorithm in test5v5_compact.m is
+still possible, though for routine runs it is less convenient than using the
+GUI.
+
+Both these methods are explained in more detail in the readme, as well as a method
+useful for experimentation that uses the script as a function.
+
+* Complete removal of the off-nadir rolling geometry mode. The mode previously
+  called "old geometry" has been changed to "nadir" and "new geometry" has
+  been changed to "off-nadir" to future-proof them. Both use flat geometry
+  rather than rolling.
+* Addition of full-featured Matlab GUI for starting runs. The GUI has options
+  corresponding to nearly everything that the script version can do (including
+  all options that are used for runs on a regular basis).
