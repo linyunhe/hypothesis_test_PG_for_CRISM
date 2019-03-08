@@ -1,0 +1,14 @@
+ENVI
+description = {
+ENVI header saved using CRISM MLM or related code
+}
+samples = 924
+lines   = 261
+bands   = 5
+header offset = 0
+file type = ENVI Standard
+data type = 5
+interleave = bsq
+sensor type = Unknown
+byte order = 0
+
