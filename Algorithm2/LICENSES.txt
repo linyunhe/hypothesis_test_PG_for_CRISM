@@ -1,0 +1,24 @@
+Notice about licenses for software in this package
+-------------------------------------------------------
+
+This software package includes MEX (Matlab EXecutable) binaries compiled from
+C++ to run on 64-bit Windows machines. The compiler used was Microsoft Visual
+Studio 2015 Community Edition. To make these MEX binaries runnable on Windows
+computers that don't have a Microsoft Visual Studio compiler installed, I have
+included (a) files(s) for which Microsoft gives authorization to distribute.
+
+This/these files is/are:
+	
+	* vcomp140.dll
+	
+In their terms and conditions for this product
+(https://www.visualstudio.com/en-us/support/legal/mt171547), Microsoft gives
+the relavent permission under section 3.a ("REDIST.TXT Files"). Microsoft also
+requires us to agree to terms protecting this Redistributable Code that are at
+least as strict as its own protection of it. I AM NOT A LAWYER, but this
+prohibits us from, at the very least, reverse-engineering the file(s) above.
+Therefore, please do not do that.
+
+ - Daniel Politte
+
+Last updated: 9 August 2016

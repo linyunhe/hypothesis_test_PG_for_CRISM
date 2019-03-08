@@ -1,0 +1,8 @@
+!all: -largeArrayDims -llibvcruntime LINKFLAGS="/NODEFAULTLIB:vcruntime.lib $LINKFLAGS"
+!debug: -g
+!omp: CC=g++ COMPFLAGS="/openmp $COMPFLAGS" CFLAGS="\$CFLAGS -fopenmp" LDFLAGS="\$LDFLAGS -fopenmp" CXXOPTIMFLAGS="\$CXXOPTIMFLAGS -fopenmp" -Dcrism_omp_on
+!verb: -v
+
+mex_check.cpp
+compute_logcosh_penalty_H_mex.cpp
+general_proj_spat_mex.cpp
