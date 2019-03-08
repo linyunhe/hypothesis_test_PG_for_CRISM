@@ -3,7 +3,7 @@
 % num_iter is the number of iterations you'd like to run
 scalar = 10^4;
 N = 10;
-num_iter = 2500;
+num_iter = 250;
 % Get correct path
 cur_folder = pwd;
 save_path = fullfile(cur_folder,'example_data/simulations_results');
@@ -15,12 +15,12 @@ algorithm1_path = fullfile(cur_folder,'Algorithm1');
 algorithm2_path = fullfile(cur_folder,'Algorithm2');
 
 
-truth = read_envi_data(fullfile(cur_folder,'example_data/ground_truth_mu.bsq'));
+truth = read_envi_data(fullfile(cur_folder,'example_data/ground_truth_mu_example.bsq'));
 for k = 1:N
     display(k)
 % Generate scaled poisson distributed noise to the groundtruth    
     data = poissrnd(truth.*scalar)./scalar;
-    iof = zeros(181,640,238);
+    iof = zeros(181,640,5);
     iof(1:170,32:631,:) = data;
     write_envi_data(iof,fullfile(save_path,sprintf('Simulations%i',k)),'bsq');
 % Start to run algorithm1 and algorithm2
@@ -34,6 +34,7 @@ for k = 1:N
         'sb_filename', sb_path,...
         'wa_filename', wa_path,...
         'num_iter', num_iter,...
+        'save_spectrogram_flag', 0,...
         'switchover_at_iter', round(num_iter/5),...
         'switchover_flag',1,...
         'observation_base', output_prefix...        
@@ -61,9 +62,9 @@ end
 
 
 % Compute the mean relative error of each runs
-truth = read_envi_data(fullfile(cur_folder,'example_data/ground_truth_c.bsq'));
-err_p = zeros(261,924,238,N);
-err_g = zeros(261,924,238,N);
+truth = read_envi_data(fullfile(cur_folder,'example_data/ground_truth_c_example.bsq'));
+err_p = zeros(261,924,5,N);
+err_g = zeros(261,924,5,N);
 for k = 1:N
     est_p = read_envi_data(fullfile(save_path,sprintf('Simulations%i_PRUN_c_iter_%i.bsq',k,num_iter)));
     est_g = read_envi_data(fullfile(save_path,sprintf('Simulations%i_GRUN_c_iter_%i.bsq',k,num_iter)));
