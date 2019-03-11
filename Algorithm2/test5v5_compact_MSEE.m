@@ -90,7 +90,7 @@ params.rows_use_all = false;
 params.rows_subset_bounds = [1,170];
 params.cols_use_all = true;
 params.cols_subset_bounds = [250,350];
-params.bands_bounds = [193,197]; % the bands that corresond to the range found in the SSA
+params.bands_bounds = [188,433]; % the bands that corresond to the range found in the SSA
 
 % output file naming
 params.observation_base = '';

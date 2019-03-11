@@ -64,7 +64,7 @@ end
 params.spectral_offset = 0; % in units nm
 
 params.save_c_on_iters_flag = 1; % whether to save the scene on the iters listed below
-params.save_mu_on_iters_flag = 0; % whether to save sensor space on the iters listed below
+params.save_mu_on_iters_flag = 1; % whether to save sensor space on the iters listed below
 params.save_proj_on_iters_flag = 0;
 params.save_input_flag = 0;
 params.save_spectrogram_flag = 0;
@@ -102,7 +102,7 @@ params.rows_use_all = 0;
 params.rows_subset_bounds = [1,170];
 params.cols_use_all = true;
 params.cols_subset_bounds = [250,350];
-params.bands_bounds = [193,197]; % the bands that corresond to the range found in the SSA
+params.bands_bounds = [188,433]; % the bands that corresond to the range found in the SSA
 params.pre_end = 36;
 params.post_start = 50;
 params.spec_range = 10;
