@@ -20,5 +20,6 @@ prohibits us from, at the very least, reverse-engineering the file(s) above.
 Therefore, please do not do that.
 
  - Daniel Politte
+ - Linyun He
 
 Last updated: 9 August 2016
