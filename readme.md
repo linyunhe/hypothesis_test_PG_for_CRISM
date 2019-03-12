@@ -19,15 +19,16 @@ This code is used to simulate how two different algorithms work for the CRISM-li
 This code is used to select the statistical model based on data itself.
 
 **Input**: SB file (default: cdr490947778566_sb0000000l_3_envi.img), WA file (default: cdr490947778566_wa0000000l_3_envi.img) and a folder containing: 
-a. ssa and corresponding ddr;
-b. An input parameter txt file named "PG_running_info". Example: ![PG_input_info](PG_input_info.png);
-c. Create an empty folder named "PG_running" to save the output results.
+1. ssa and corresponding ddr;
+2. An input parameter txt file named "PG_running_info". Example: ![PG_input_info](PG_input_info.png);
+3. Create an empty folder named "PG_running" to save the output results.
 
 **Parameters**: Number of iterations for algorithm1 and algorithm2 (default: num_iter_p=30 and num_iter_g=150).
 
-**Output**: a. Multiple results from algorithm1 and algorithm2. 
-b. An output txt file named "PG_running_info.txt". Example: ![PG_input_info](PG_input_info.png);
-c. P-value figure for this model selection named "PG_running_info.txt".
+**Output**: 
+1. Multiple results from algorithm1 and algorithm2. 
+2. An output txt file named "PG_running_info.txt". Example: ![PG_input_info](PG_input_info.png);
+3. P-value figure for this model selection named "PG_running_info.txt".
 
 
 ## Running Step
