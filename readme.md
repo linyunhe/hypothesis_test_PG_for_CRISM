@@ -4,7 +4,7 @@ This code is used to simulate how two different algorithms work for the CRISM-li
 
 **Input**: Groundtruth projected hyperspectral image (default: ground_truth_c.bsq) and sensor data (default: ground_truth_mu.bsq), corresponding DDR (default: ground_truth_ddr.bsq), SB file (default: cdr490947778566_sb0000000l_3_envi.img) and WA file (default: cdr490947778566_wa0000000l_3_envi.img).
 
-**Parameters**: Number of simulations (default: N=10), number of iterations (default: num_iter=250).
+**Parameters**: Number of simulations (default: N=10), number of iterations (default: num_iter=250), scalar for Poisson (default: scalar=$10^4$).
 
 **Output**: MLM results based on scaled Poisson distribution (Algorithm1) and Gaussian distribution (Algorithm2).
 
