@@ -65,7 +65,7 @@ function res = PG_model_selection(data_folder)
     d_kl_g = sum(pdf.*log(pdf)) + log(100);
     
     pvalue_p = 1-chi2cdf(G2*scalar_p,1);
-    p = [0:0.001:1];
+    p = [0:0.01:1];
     cdp = p;
     cdn = p;
 %
@@ -77,11 +77,11 @@ function res = PG_model_selection(data_folder)
     end
     
     figure;
-    plot(p,p);
+    plot(p(1:5:end),p(1:5:end));
     hold on;
-    plot(p,cdp,'o');
+    plot(p(1:5:end),cdp(1:5:end),'o-');
     hold on;
-    plot(p,cdn,'x')
+    plot(p(1:5:end),cdn(1:5:end),'x-')
     title('Cumulative distribution of P-values');
     xlabel('Type I error \alpha');
     ylabel('Cumulative distribution of rejected measures');
