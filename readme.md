@@ -1,4 +1,4 @@
-This is the MATLAB+Cpp version.
+This is the MATLAB+Cpp version by 03/13/2019.
 # 1. Simulations
 This code is used to simulate how two different algorithms work for the CRISM-like scaled Poisson distributed data.
 
@@ -39,3 +39,19 @@ This code is used to select the statistical model based on data itself.
 4. Outputs are saved to the output folder "PG_running" under "example_folder".
 
 # 3. CRISM homogenous area Poisson distribution test
+This code is used to visualize the scaled Poisson distribution approximation of a homogeneous area.
+
+**Input**: SSA, WA files and output folder path
+
+**Parameters**: Display forced color bands (default as [24, 174, 242]), output filenames and output animation frame rate (default as 2)
+
+**Output**: 
+1. Video file records all distribution approximations for all bands; 
+2. Selected homogeneous area spatial display figure;
+3. Retrieved scalars for all bands of the selected homogeneous area.
+
+
+## Running Step
+See the intruction steps (only for CRISM L-data now):
+
+![HM_input_info](input_example_homo.png);
