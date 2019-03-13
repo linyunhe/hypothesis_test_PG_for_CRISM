@@ -69,7 +69,7 @@ params.save_proj_on_iters_flag = 0;
 params.save_input_flag = 0;
 params.save_spectrogram_flag = 0;
 
-params.saving_iters = [25]; % note: both c and mu are always saved after the last iteration regardless of these settings
+params.saving_iters = []; % note: both c and mu are always saved after the last iteration regardless of these settings
 
 % input files
 params.crism_iof_filename = ''; %measured radiance

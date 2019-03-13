@@ -205,11 +205,37 @@ if band_max - band_min + 1 ~= size(crism_iof,3)
     error('The selected band range [%i, %i] does not have the correct number of bands (%i; currently: %i)',band_min,band_max,size(crism_iof,3),band_max-band_min+1);
 end
 
-% currently, no support for subsetting bands within SSA
-% row_min = 100;
-% row_max = 130;
-% col_min = 300;
-% col_max = 360;
+
+% Determine if any edge rows or cols need to be cut (because they are
+% uniformly zero)
+has_contents_rows = all(any(crism_iof,2),3);
+has_contents_cols = all(any(crism_iof),3);
+
+% only consider the part we've selected so far
+has_contents_rows = has_contents_rows(row_min:row_max);
+has_contents_cols = has_contents_cols(col_min:col_max);
+
+% determine the number of rows/cols on each side that ought to be cut
+num_bad_early_rows = find(has_contents_rows==1,1,'first') - 1;
+num_bad_late_rows = length(has_contents_rows) - find(has_contents_rows==1,1,'last');
+num_bad_early_cols = find(has_contents_cols==1,1,'first') - 1;
+num_bad_late_cols = length(has_contents_cols) - find(has_contents_cols==1,1,'last');
+
+% adjust mins and maxes accordingly
+
+if length(num_bad_early_rows) ~= 0
+    row_min = row_min + num_bad_early_rows;
+end
+if length(num_bad_late_rows) ~=0
+    row_max = row_max - num_bad_late_rows;
+end
+if length(num_bad_early_cols) ~= 0
+    col_min = col_min + num_bad_early_cols;
+end
+if length(num_bad_late_cols) ~= 0
+    col_max = col_max - num_bad_late_cols;
+end
+
 crism_iof = crism_iof(row_min:row_max,col_min:col_max,:); 
 ddr_iof = ddr_iof(row_min:row_max,col_min:col_max,:);
 sb = sb(:,col_min:col_max,band_min:band_max);
